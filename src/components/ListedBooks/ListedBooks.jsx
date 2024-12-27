@@ -4,10 +4,10 @@ import { NavLink, Outlet } from 'react-router-dom';
 const ListedBooks = () => {
     return (
         <div className='max-w-6xl mx-auto'>
-            <div className='bg-[#13131326] py-3 my-4 rounded-xl'>
+            <div className='bg-[#13131326] py-3 my-4 rounded-xl mx-2'>
                 <h2 className='text-5xl font-bold text-center'>Books</h2>
             </div>
-            <div className='mt-6 border-b-[.5px] space-x-4 border-[#1313134D]'>
+            <div className='mt-6 border-b-[.5px] space-x-4 border-[#1313134D] mx-2'>
                 <NavLink 
                 to={`readingList`}
                 className={({ isActive }) =>
