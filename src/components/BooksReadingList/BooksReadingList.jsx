@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { getReadingBook } from '../../utility/LocalStorage';
+import ReadingListDetails from '../ReadingListDetails/ReadingListDetails';
 
 const BooksReadingList = () => {
-    const [bookList, setBookList] = useState([]);
+    const [readBooks, setReadBooks] = useState([]);
     const books = useLoaderData();
     
     useEffect(()=>{
         const storedBooksId = getReadingBook();
         if(books.length > 0){
            const listedBooks = books.filter(book => storedBooksId.includes(book.bookId))
-           setBookList(listedBooks)
+           setReadBooks(listedBooks)
         }
     },[])
-    // console.log(bookList)
+    // console.log(readBooks)
     return (
         <div>
-            <h1>this reading list books</h1>
+            <div className='max-w-6xl mx-auto'>
+                {
+                    readBooks.map(readBook => <ReadingListDetails key={readBook.bookId} readBook={readBook}></ReadingListDetails>)
+                }
+            </div>
         </div>
     );
 };
