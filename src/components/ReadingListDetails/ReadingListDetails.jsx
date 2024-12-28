@@ -4,7 +4,6 @@ import { FcBusinessman } from "react-icons/fc";
 import { TbPageBreak } from "react-icons/tb";
 
 const ReadingListDetails = ({readBook}) => {
-    console.log('bbb',readBook)
     const {
         bookName,
         author,

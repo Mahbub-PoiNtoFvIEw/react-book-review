@@ -1,30 +1,33 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import '../ListedBooks/ListBooks.css';
 
 const ListedBooks = () => {
+    console.log(NavLink)
     return (
         <div className='max-w-6xl mx-auto'>
             <div className='bg-[#13131326] py-3 my-4 rounded-xl mx-2'>
                 <h2 className='text-5xl font-bold text-center'>Books</h2>
             </div>
-            <div className='mt-6 border-b-[.5px] space-x-4 border-[#1313134D] mx-2'>
+            <nav className='mt-6 border-b-[.5px] space-x-4 border-[#1313134D] mx-2 flex relative'>
                 <NavLink 
                 to={`readingList`}
-                className={({ isActive }) =>
+                className={({ isActive, isPending }) =>
                     isActive
-                      ? "border-[.5px] border-b-0 border-[#1313134D] py-1 px-3 rounded-t-lg text-[#131313CC]"
-                      : "text-[#13131380] py-1 px-3"
+                      ? "chrome-tab-active"
+                      
+                      : "chrome-tab-inactive"
                   }
                 >Read Books</NavLink>
                 <NavLink 
                 to={`wishList`}
                 className={({ isActive }) =>
                     isActive
-                      ? "border-[.5px] border-b-0 border-[#1313134D] py-1 px-3 rounded-t-lg text-[#131313CC]"
-                      : "text-[#13131380] py-1 px-3"
+                      ? "chrome-tab-active"
+                      : "chrome-tab-inactive"
                   }
                 >Wishlist Books</NavLink>
-            </div>
+            </nav>
             <Outlet></Outlet>
         </div>
     );

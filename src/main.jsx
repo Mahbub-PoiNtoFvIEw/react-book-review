@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
 } from "react-router-dom";
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
@@ -31,8 +32,7 @@ const router = createBrowserRouter([
         children:[
           {
             path: '',
-            element: <BooksReadingList></BooksReadingList>,
-            loader: ()=> fetch ('../books.json')
+            element: <Navigate to={`readingList`} ></Navigate>
           },
           {
             path: 'readingList',
@@ -49,6 +49,7 @@ const router = createBrowserRouter([
       {
         path: '/readingPage',
         element: <PagesToRead></PagesToRead>,
+        loader: ()=> fetch ('../books.json')
       },{
         path: '/book/:id',
         element: <BookDetails></BookDetails>,
