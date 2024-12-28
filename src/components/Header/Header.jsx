@@ -20,8 +20,8 @@ const Header = () => {
           <h1 className="md:text-4xl text-xl font-bold">Book Vibe</h1>
         </div>
         <div
-          className={`flex md:gap-4 gap-2 md:flex-row flex-col md:bg-white bg-slate-50 rounded-lg absolute md:static cursor-pointer duration-1000
-                        ${!openMenu ? `-top-40` : `top-14 py-2`}
+          className={`flex md:gap-4 gap-2 md:flex-row flex-col md:bg-white bg-slate-50 rounded-lg absolute md:static cursor-pointer duration-1000 left-1
+                        ${!openMenu ? `-top-40` : `top-8 py-2`}
                         `}
         >
           <NavLink

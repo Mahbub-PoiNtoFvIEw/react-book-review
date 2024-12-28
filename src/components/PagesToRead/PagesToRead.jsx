@@ -32,14 +32,14 @@ const PagesToRead = () => {
 
     console.log(readBooks)
     return (
-        <div>
-            <div className='bg-slate-200 py-8 flex justify-center items-center'>
+        <div className='max-w-6xl mx-auto mt-6'>
+            <div className='bg-[#13131308] py-8 flex justify-center items-center rounded-xl mx-2'>
                 <BarChart
                     width={650}
                     height={400}
                     data={readBooks}
                     margin={{
-                        top: 10,
+                        top: 20,
                         right: 30,
                         left: 20,
                         bottom: 5,
