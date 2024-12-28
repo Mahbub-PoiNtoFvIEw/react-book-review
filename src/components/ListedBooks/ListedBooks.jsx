@@ -1,9 +1,9 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigation } from 'react-router-dom';
 import '../ListedBooks/ListBooks.css';
 
 const ListedBooks = () => {
-    console.log(NavLink)
+    const navigation = useNavigation();
     return (
         <div className='max-w-6xl mx-auto'>
             <div className='bg-[#13131326] py-3 my-4 rounded-xl mx-2'>
@@ -28,7 +28,16 @@ const ListedBooks = () => {
                   }
                 >Wishlist Books</NavLink>
             </nav>
-            <Outlet></Outlet>
+            {
+                navigation.state === "loading"? <div className="text-center mt-20">
+                    <span className="loading loading-ball loading-xs"></span>
+                    <span className="loading loading-ball loading-sm"></span>
+                    <span className="loading loading-ball loading-md"></span>
+                    <span className="loading loading-ball loading-lg"></span>
+                </div>
+                :
+                <Outlet></Outlet>
+            }
         </div>
     );
 };
