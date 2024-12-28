@@ -1,11 +1,15 @@
 import React from 'react';
 import { NavLink, Outlet, useNavigation } from 'react-router-dom';
 import '../ListedBooks/ListBooks.css';
+import { Helmet } from 'react-helmet-async';
 
 const ListedBooks = () => {
     const navigation = useNavigation();
     return (
         <div className='max-w-6xl mx-auto'>
+            <Helmet>
+                <title>Am@r bOok | Listed Books</title>
+            </Helmet>
             <div className='bg-[#13131326] py-3 my-4 rounded-xl mx-2'>
                 <h2 className='text-5xl font-bold text-center'>Books</h2>
             </div>

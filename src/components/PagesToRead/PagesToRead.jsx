@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { getReadingBook } from '../../utility/LocalStorage';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { Helmet } from 'react-helmet-async';
 
 const PagesToRead = () => {
     const [readBooks, setReadBooks] = useState([]);
@@ -33,6 +34,9 @@ const PagesToRead = () => {
     console.log(readBooks)
     return (
         <div className='max-w-6xl mx-auto mt-6'>
+            <Helmet>
+                <title>Am@r bOok | Page To Read</title>
+            </Helmet>
             <div className='bg-[#13131308] py-8 flex justify-center items-center rounded-xl mx-2'>
                 <BarChart
                     width={650}

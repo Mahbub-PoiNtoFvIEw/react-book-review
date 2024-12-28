@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { isReadingExist, isWishExist, saveReadingBooks, saveWishListBooks } from '../../utility/LocalStorage';
 import { ToastContainer, toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const BookDetails = () => {
     const books = useLoaderData();
@@ -42,6 +43,9 @@ const BookDetails = () => {
       }
     return (
         <div className='max-w-6xl mx-auto grid md:grid-cols-2 gap-6 mt-8 mb-6 px-2'>
+            <Helmet>
+                <title>Am@r bOok | Book Details</title>
+            </Helmet>
             <div className='flex-grow bg-[#1313130D] flex justify-center items-center py-12 rounded-2xl'>
                 <img className='h-96' src={image} alt="" />
             </div>
