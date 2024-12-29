@@ -17,7 +17,9 @@ const Header = () => {
               <AiOutlineMenuUnfold className="text-xl md:hidden text-stone-500 cursor-pointer"></AiOutlineMenuUnfold>
             )}
           </div>
-          <h1 className="md:text-2xl text-xl font-bold">Am<span className="text-[#23BE0A]">@</span>r bOok</h1>
+          <NavLink to={`/`}>
+            <h1 className="md:text-2xl text-xl font-bold">Am<span className="text-[#23BE0A]">@</span>r bOok</h1>
+          </NavLink>
         </div>
         <div
           className={`flex md:gap-4 gap-2 md:flex-row flex-col md:bg-white bg-slate-50 rounded-lg absolute md:static cursor-pointer duration-1000 left-1
