@@ -1,12 +1,15 @@
-import React from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { isReadingExist, isWishExist, saveReadingBooks, saveWishListBooks } from '../../utility/LocalStorage';
 import { ToastContainer, toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const BookDetails = () => {
+    const navigate = useNavigate();
     const books = useLoaderData();
     const {id} = useParams();
+    const {user,loading} = useContext(AuthContext);
     const book =  books.find((book) => id === book.bookId);
     const {
         bookId,
@@ -23,6 +26,7 @@ const BookDetails = () => {
       } = book;
 
       const handleReadingBook = () =>{
+        if(user){
             const exist = isReadingExist(bookId)
             if(!exist){
                 saveReadingBooks(bookId)
@@ -30,16 +34,28 @@ const BookDetails = () => {
             }else{
                 toast('Book already Added To the Book List..!')
             }
+        }
+        else{
+            navigate('/signin');
+        }
+            
       }
       const handleWishListBook = () =>{
+        if(user){
             const wishExist= isWishExist(bookId);
             const readingExist = isReadingExist(bookId);
             if(!wishExist && !readingExist){
                 saveWishListBooks(bookId)
                 toast('book added to the Wish List..!')
+                navigate('/booksList/wishList');
             }else{
                 toast('book is in the reading list, you cant add this book in the wish list..!')
+                navigate('/booksList/wishList');
             }
+        }
+        else{
+            navigate('/signin');
+        }
       }
     return (
         <div className='max-w-6xl mx-auto grid md:grid-cols-2 gap-6 mt-8 mb-6 px-2'>
@@ -67,7 +83,7 @@ const BookDetails = () => {
                         <tbody>
                             <tr>
                                 <td>Number of Pages :</td>
-                                <td className='font-bold py-1'>{totalPages}t</td>
+                                <td className='font-bold py-1'>{totalPages}</td>
                             </tr>
                             <tr>
                                 <td>Publisher :</td>
